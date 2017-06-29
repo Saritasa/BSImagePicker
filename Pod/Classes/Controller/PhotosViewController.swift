@@ -122,7 +122,6 @@ final class PhotosViewController : UICollectionViewController {
 
         if let album = albumsDataSource.fetchResults.first?.firstObject {
             initializePhotosDataSource(album, selections: defaultSelections)
-            updateAlbumTitle(album)
             collectionView?.reloadData()
         }
         
@@ -144,6 +143,10 @@ final class PhotosViewController : UICollectionViewController {
         super.viewWillAppear(animated)
         
         updateDoneButton()
+        
+        if let album = albumsDataSource.fetchResults.first?.firstObject {
+            updateAlbumTitle(album)
+        }
     }
     
     // MARK: Button actions
